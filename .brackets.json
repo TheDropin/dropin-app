@@ -7,6 +7,12 @@
         "/Users/innovator/test/dropin-app/platforms/ios/www/plugins/cordova-plugin-console/www/logger.js",
         "/Users/innovator/test/dropin-app/platforms/ios/www/plugins/cordova-plugin-geolocation/www/Coordinates.js",
         "/Users/innovator/test/dropin-app/platforms/ios/www/plugins/cordova-plugin-geolocation/www/geolocation.js",
-        "/Users/innovator/test/dropin-app/platforms/ios/www/plugins/cordova-plugin-geolocation/www/Position.js"
+        "/Users/innovator/test/dropin-app/platforms/ios/www/plugins/cordova-plugin-geolocation/www/Position.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/www/plugins/cordova-plugin-geolocation/www/PositionError.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/www/service-worker.js",
+        "/Users/innovator/test/dropin-app/plugins/cordova-plugin-console/tests/tests.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/www/lib/ionic/js/ionic-angular.min.js",
+        "/Users/innovator/test/dropin-app/www/js/services.js",
+        "/Users/innovator/test/dropin-app/www/js/services/google-maps-loader.js"
     ]
 }

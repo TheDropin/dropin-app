@@ -1,6 +1,6 @@
 {
-  "name": "My Ionic App",
-  "short_name": "My Ionic App",
+  "name": "The Dropin",
+  "short_name": "The Dropin",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
