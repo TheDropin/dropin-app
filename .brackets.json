@@ -13,6 +13,14 @@
         "/Users/innovator/test/dropin-app/plugins/cordova-plugin-console/tests/tests.js",
         "/Users/innovator/test/dropin-app/platforms/ios/www/lib/ionic/js/ionic-angular.min.js",
         "/Users/innovator/test/dropin-app/www/js/services.js",
-        "/Users/innovator/test/dropin-app/www/js/services/google-maps-loader.js"
+        "/Users/innovator/test/dropin-app/www/js/services/google-maps-loader.js",
+        "Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/core/readyException",
+        "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/core/var/rsingleTag.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/core.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/addGetHookIf.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/adjustCSS.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/core/stripAndCollapse.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/hiddenVisibleSelectors.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/showHide.js"
     ]
 }
