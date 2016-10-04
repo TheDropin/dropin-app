@@ -1,0 +1,18 @@
+{
+  "name": "dropin-app",
+  "app_id": "",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ],
+    "proxies": [
+    {
+      "path": "/dropin_api",
+      "proxyUrl": "http://the-dropin.herokuapp.com/api/v1"
+    }
+  ]
+}

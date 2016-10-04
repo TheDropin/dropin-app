@@ -1,0 +1,12 @@
+{
+    "jscodehints.detectedExclusions": [
+        "/Users/innovator/test/dropin-app/platforms/ios/www/lib/ionic/js/ionic.min.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/www/lib/ionic/js/ionic.bundle.min.js",
+        "/Users/innovator/test/dropin-app/www/js/app.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/www/plugins/cordova-plugin-console/www/console-via-logger.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/www/plugins/cordova-plugin-console/www/logger.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/www/plugins/cordova-plugin-geolocation/www/Coordinates.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/www/plugins/cordova-plugin-geolocation/www/geolocation.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/www/plugins/cordova-plugin-geolocation/www/Position.js"
+    ]
+}
