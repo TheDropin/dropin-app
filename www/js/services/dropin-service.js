@@ -30,9 +30,24 @@ angular.module('services').factory('DropinService', function($q, $http){
         
         return def.promise;
     }
+    
+    function getLocationsIn(bounds) {
+        
+        var def = $q.defer();
+
+        $http.get(API_URL+"/location",{ 
+            params: bounds
+        }).then(function(res){
+            console.log(res);
+            def.resolve(res.data.content);
+        });
+        
+        return def.promise;
+    }
    
     return {
         getLocations: getLocations,
+        getLocationsIn: getLocationsIn,
         postLocation: postLocation
     };
     

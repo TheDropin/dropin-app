@@ -28,21 +28,19 @@ angular.module('controllers')
         $scope.map = map;
         
         map.addListener('mousedown', function(event){
-            console.log('mousedown');
-            
             pressPosition = event;
             pressTimeout = setTimeout(addLocation, 2000);
         });
 
         map.addListener('mouseup', function(event){
-            console.log('mouseup');
             clearTimeout(pressTimeout);
         });
         
         map.addListener('bounds_changed', function () {
+            clearTimeout(pressTimeout);
 
             console.log('bounds_changed');
-/*            
+
             var bounds = map.getBounds().toJSON();
             var query = {
                 xmin: bounds['west'],
@@ -51,37 +49,17 @@ angular.module('controllers')
                 ymax: bounds.north
             };
             console.log(JSON.stringify(query));
-/*
-            MngisService.getStopsWithinBounds(query,
-                function (resp) {
-                    //                console.dir(Object.keys(resp));
-                    updateStops(resp);
-                },
-                function (err) {
-                    console.dir(JSON.stringify(err));
-                }
-            );
-*/
-            var center = map.getCenter().toJSON();
-            console.log(center);
-            DropinService.getLocations(center.lat, center.lng)
+
+            DropinService.getLocationsIn(query)
                 .then(function(locations) {
-                    updateLocations(locations);
+                    mergeLocations(locations);
                 });
         });
-
-        navigator.geolocation.getCurrentPosition(
-            function (loc) {
-                console.log(JSON.stringify(loc));
-            }, function (err) {
-                console.error('geo error');
-                console.log(JSON.stringify(err));
-            }
-        );
+       
     });
+    
 
-
-    function updateLocations(locations) {
+    function mergeLocations(locations) {
 
         var new_siteids = locations.map(function (location) {
             return location._id;
