@@ -10,14 +10,14 @@
 
 
     <link href="css/ionic.app.css" rel="stylesheet">
-    
+
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="cordova.js"></script>
-    
+
     <script src="js/modules.js"></script>
     <script src="js/app.js"></script>
-    
+
     <script src="js/controllers/add-location-controller.js"></script>
 
     <script src="js/services/config.js"></script>
@@ -36,7 +36,32 @@
         <ion-content class="map-container">
 
             <google-map></google-map>
-            
+
+
+            <div id="add-location-panel" class="list" ng-show="addFormOpen">
+
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        What is it?
+                    </div>
+                    <select>
+                        <option>Drinking Fountain</option>
+                        <option selected>Restroom</option>
+                        <option>Power Outlet</option>
+                    </select>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Description</span>
+                    <input type="text" ng-model="pressLocation.description" placeholder="The drinking fountain is inside the ...">
+                </label>
+
+
+                <button class="button button-full button-balanced" ng-click="commitLocationToServer()">Save</button>
+
+                <button class="button button-full button-dark" ng-click="closeForm()">Cancel</button>
+
+            </div>
+
         </ion-content>
     </ion-pane>
 </body>

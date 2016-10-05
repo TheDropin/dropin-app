@@ -9824,3 +9824,8 @@ a.button {
 
 .map-container .scroll {
   height: 100%; }
+
+#add-location-panel {
+  position: absolute;
+  top: 250px;
+  width: 100%; }

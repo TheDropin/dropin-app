@@ -21,6 +21,9 @@
         "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/adjustCSS.js",
         "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/core/stripAndCollapse.js",
         "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/hiddenVisibleSelectors.js",
-        "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/showHide.js"
+        "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/showHide.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/curCSS.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/support.js",
+        "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/var/cssExpand.js"
     ]
 }
