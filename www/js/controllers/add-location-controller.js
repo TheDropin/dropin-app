@@ -5,7 +5,7 @@ angular.module('controllers')
 
         var map, markers = {};
 
-        var pressTimeout, pressPosition;
+        var pressPosition, placeholder, pressTimeout;
 
         function addLocation() {
 
@@ -14,7 +14,7 @@ angular.module('controllers')
             google.maps.event.trigger(map, 'resize');
 
             map.setCenter(pressPosition.latLng);
-            map.setZoom(20);
+            map.setZoom(18);
 
             pressPosition = pressPosition.latLng.toJSON();
 
@@ -32,12 +32,14 @@ angular.module('controllers')
         }
 
         $scope.closeForm = function () {
+            
+            placeholder.setMap(null);
 
             $scope.addFormOpen = false;
 
             document.getElementById("map").style.height = "100%";
             google.maps.event.trigger(map, 'resize');
-            map.setZoom(18);
+            map.setZoom(16);
 
             $scope.pressLocation = null;
         };
@@ -57,15 +59,18 @@ angular.module('controllers')
             $scope.map = map;
 
             map.addListener('mousedown', function (event) {
+                if ($scope.addFormOpen) return;
                 pressPosition = event;
                 pressTimeout = setTimeout(addLocation, 2000);
             });
 
             map.addListener('mouseup', function (event) {
+                if ($scope.addFormOpen) return;
                 clearTimeout(pressTimeout);
             });
 
             map.addListener('idle', function () {
+                
                 clearTimeout(pressTimeout);
 
                 console.log('idle');
@@ -126,7 +131,7 @@ angular.module('controllers')
                 lng: location.geometry.coordinates[1]
             };
 
-            var marker = new google.maps.Marker({
+            placeholder = new google.maps.Marker({
                 position: myLatLng,
                 map: map,
                 draggable: true,

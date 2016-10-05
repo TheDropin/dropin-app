@@ -25,5 +25,7 @@
     "cordova-plugin-transport-security",
     "cordova-plugin-network-information"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "ios"
+  ]
 }
