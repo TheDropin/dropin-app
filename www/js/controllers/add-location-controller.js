@@ -16,11 +16,11 @@ angular.module('controllers')
             map.setCenter(pressPosition.latLng);
             map.setZoom(18);
 
-            pressPosition = pressPosition.latLng.toJSON();
+            var pos = pressPosition.latLng.toJSON();
 
             $scope.pressLocation = {
                 geometry: {
-                    coordinates: [pressPosition.lat, pressPosition.lng]
+                    coordinates: [pos.lat, pos.lng]
                 },
                 description: ""
             };
@@ -39,6 +39,8 @@ angular.module('controllers')
 
             document.getElementById("map").style.height = "100%";
             google.maps.event.trigger(map, 'resize');
+
+            map.setCenter(pressPosition.latLng);
             map.setZoom(16);
 
             $scope.pressLocation = null;
@@ -59,6 +61,7 @@ angular.module('controllers')
             $scope.map = map;
 
             map.addListener('mousedown', function (event) {
+                clearTimeout(pressTimeout);
                 if ($scope.addFormOpen) return;
                 pressPosition = event;
                 pressTimeout = setTimeout(addLocation, 2000);
@@ -69,9 +72,12 @@ angular.module('controllers')
                 clearTimeout(pressTimeout);
             });
 
-            map.addListener('idle', function () {
-                
+            map.addListener('bounds_changed', function () {
+                console.log('bounds_changed');
                 clearTimeout(pressTimeout);
+            });
+            
+            map.addListener('idle', function () {
 
                 console.log('idle');
                 if ($scope.addFormOpen) return;
