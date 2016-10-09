@@ -24,6 +24,9 @@
         "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/showHide.js",
         "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/curCSS.js",
         "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/support.js",
-        "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/var/cssExpand.js"
+        "/Users/innovator/test/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/var/cssExpand.js",
+        "/Users/joebeuckman/Documents/dropin-app/www/service-worker.js",
+        "/Users/joebeuckman/Documents/dropin-app/www/lib/ionic/js/ionic.min.js",
+        "/Users/joebeuckman/Documents/dropin-app/www/lib/angular-ui-router/src/urlRouter.js"
     ]
 }

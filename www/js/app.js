@@ -1,4 +1,4 @@
-angular.module('dropin', ['ionic', 'services', 'controllers', 'directives'])
+angular.module('dropin', ['ionic', 'ngRoute', 'services', 'controllers', 'directives', 'pascalprecht.translate'])
 
 .run(function ($ionicPlatform, DropinService, Config, googleMapsLoader) {
 
@@ -37,5 +37,37 @@ angular.module('dropin', ['ionic', 'services', 'controllers', 'directives'])
         ready();
     }
     
+})
+
+.config(function ($routeProvider, $urlRouterProvider, $translateProvider) {
+/*
+    $translateProvider
+        .useStaticFilesLoader({
+            prefix: 'js/locales/',
+            suffix: '.json'
+        })
+        .registerAvailableLanguageKeys(['en', 'es'], {
+            'en': 'en',
+            'en_GB': 'en',
+            'en_US': 'en',
+            'es': 'es',
+            'es-MX': 'es',
+            'es_ES': 'es'
+        })
+        .preferredLanguage('en')
+        .fallbackLanguage('en')
+        .determinePreferredLanguage()
+        .useSanitizeValueStrategy('escapeParameters');
+*/
+
+    $routeProvider
+        .when('/add-place', {
+            templateUrl: 'templates/add-place.html',
+            controller: 'AddPlaceController',
+            cache: false
+        });
+
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/add-place');
 });
 
