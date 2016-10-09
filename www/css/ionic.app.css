@@ -9829,3 +9829,16 @@ a.button {
   position: absolute;
   top: 250px;
   width: 100%; }
+
+img.intro-screen {
+  width: 150px;
+  margin: 20px !important; }
+
+.swiper-slide {
+  text-align: center; }
+
+.pointer {
+  position: absolute;
+  left: 50%;
+  top: 140px;
+  height: 80px !important; }

@@ -21,5 +21,22 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
-@import "add-location";
+@import "add-place";
 
+img.intro-screen {
+    width: 150px;
+    margin: 20px !important;
+    display: none;
+}
+
+.swiper-slide {
+    text-align: center;
+}
+
+
+.pointer {
+    position: absolute;
+    left: 50%;
+    top: 140px;
+    height: 80px !important;
+}

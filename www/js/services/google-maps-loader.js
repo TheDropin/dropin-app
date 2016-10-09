@@ -73,7 +73,10 @@ angular.module('services').factory('googleMapsLoader', function ($q) {
             key = _key;
             
             document.addEventListener("deviceready", onDeviceReady, false);
-loadMapsApi();
+            if (!window.hasOwnProperty("device")) {
+                loadMapsApi();
+            }
+            
             return mapsApiDeferred.promise;
         },
         mapsApiPromise: mapsApiDeferred.promise,

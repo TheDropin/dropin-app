@@ -1,16 +1,22 @@
-<ion-content scroll="false">
+<ion-modal-view class="intro-slides">
     <ion-slides options="options" slider="data.slider">
         <ion-slide-page>
-            <div class="box blue">
-                <h1>BLUE</h1></div>
+            <img class="intro-screen" src="img/intro/view_map.png">
+            <p>Find amenities on the map.</p>
         </ion-slide-page>
         <ion-slide-page>
-            <div class="box yellow">
-                <h1>YELLOW</h1></div>
+            <div class="pointer-holder">
+                <img class="intro-screen" src="img/intro/press_map.png">
+                <img class="pointer" src="img/intro/pointing_finger.png">
+            </div>
+            <p>Touch and hold to add a new place.</p>
         </ion-slide-page>
         <ion-slide-page>
-            <div class="box pink">
-                <h1>PINK</h1></div>
+            <img class="intro-screen" src="img/intro/add_location.png">
+            <p>Enter information and tap save.</p>
+            
+            <button class="button button-assertive" ng-click="closeModal()">GOT IT</button>
+            
         </ion-slide-page>
     </ion-slides>
-</ion-content>
+</ion-modal-view>

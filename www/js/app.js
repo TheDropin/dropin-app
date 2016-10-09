@@ -1,6 +1,6 @@
 angular.module('dropin', ['ionic', 'ngRoute', 'services', 'controllers', 'directives', 'pascalprecht.translate'])
 
-.run(function ($ionicPlatform, DropinService, Config, googleMapsLoader) {
+.run(function ($ionicPlatform, DropinService, Config, googleMapsLoader, IntroModalService) {
 
     function ready() {
         console.log('ready')
@@ -13,6 +13,19 @@ angular.module('dropin', ['ionic', 'ngRoute', 'services', 'controllers', 'direct
             .catch(function (err) {
                 console.error('could not load config');
             });
+        
+        var storage = window.localStorage;
+        var runNumber = storage.getItem('runNumber');
+        if (!runNumber) {
+            runNumber = 1;
+        } else {
+            runNumber++;
+        }
+        storage.setItem('runNumber', runNumber);
+        
+//        if (runNumber == 1) {
+//            IntroModalService.show();
+//        }
 
 /*
         DropinService.getLocations(44.9, -92.3)
