@@ -1,9 +1,12 @@
-<ion-modal-view class="intro-slides">
+<ion-content scroll="false">
+    
     <ion-slides options="options" slider="data.slider">
+
         <ion-slide-page>
             <img class="intro-screen" src="img/intro/view_map.png">
             <p>Find amenities on the map.</p>
         </ion-slide-page>
+
         <ion-slide-page>
             <div class="pointer-holder">
                 <img class="intro-screen" src="img/intro/press_map.png">
@@ -11,12 +14,15 @@
             </div>
             <p>Touch and hold to add a new place.</p>
         </ion-slide-page>
+
         <ion-slide-page>
             <img class="intro-screen" src="img/intro/add_location.png">
             <p>Enter information and tap save.</p>
-            
-            <button class="button button-assertive" ng-click="closeModal()">GOT IT</button>
-            
+
+            <button class="button button-assertive" ui-sref="add-place">GOT IT</button>
+
         </ion-slide-page>
+
     </ion-slides>
-</ion-modal-view>
+    
+</ion-content>

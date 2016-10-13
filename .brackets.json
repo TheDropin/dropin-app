@@ -29,6 +29,10 @@
         "/Users/joebeuckman/Documents/dropin-app/www/lib/ionic/js/ionic.min.js",
         "/Users/joebeuckman/Documents/dropin-app/www/lib/angular-ui-router/src/urlRouter.js",
         "/Users/joebeuckman/Documents/dropin-app/www/lib/angular-ui-router/src/stateFilters.js",
-        "/Users/joebeuckman/Documents/dropin-app/platforms/ios/www/lib/jquery/src/css.js"
+        "/Users/joebeuckman/Documents/dropin-app/platforms/ios/www/lib/jquery/src/css.js",
+        "Users/joebeuckman/Documents/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/../var/pnum",
+        "/Users/joebeuckman/Documents/dropin-app/platforms/ios/build/emulator/The Dropin.app/www/lib/jquery/src/css/var/rnumnonpx.js",
+        "/Users/joebeuckman/Documents/dropin-app/platforms/ios/www/lib/jquery/src/data.js",
+        "/Users/joebeuckman/Documents/dropin-app/platforms/ios/www/lib/jquery/src/css/showHide.js"
     ]
 }

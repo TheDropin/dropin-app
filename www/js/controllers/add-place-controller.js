@@ -73,7 +73,6 @@ angular.module('controllers')
         });
 
         map.addListener('bounds_changed', function () {
-            console.log('bounds_changed');
             clearTimeout(pressTimeout);
         });
 

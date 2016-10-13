@@ -9831,11 +9831,12 @@ a.button {
   width: 100%; }
 
 img.intro-screen {
-  width: 150px;
-  margin: 20px !important; }
+  margin: 40px !important;
+  width: 170px; }
 
 .swiper-slide {
-  text-align: center; }
+  text-align: center;
+  height: 100%; }
 
 .pointer {
   position: absolute;
