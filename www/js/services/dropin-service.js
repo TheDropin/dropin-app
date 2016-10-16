@@ -2,11 +2,11 @@ angular.module('services').factory('DropinService', function($q, $http){
     
     var API_URL = "https://the-dropin.herokuapp.com/api/v1";
     
-    function postLocation(location) {
+    function postPlace(place) {
         
         var def = $q.defer();
 
-        $http.post(API_URL+"/location",location)
+        $http.post(API_URL+"/places", place)
             .then(function(res){
                 def.resolve(res.data);
             })
@@ -15,11 +15,11 @@ angular.module('services').factory('DropinService', function($q, $http){
         return def.promise;
     }
     
-    function getLocations(lat, lon) {
+    function getPlaces(lat, lon) {
         
         var def = $q.defer();
 
-        $http.get(API_URL+"/location",{ 
+        $http.get(API_URL+"/places",{ 
             headers: {
                 "Geo-Position": lat + "," + lon
             }
@@ -31,11 +31,11 @@ angular.module('services').factory('DropinService', function($q, $http){
         return def.promise;
     }
     
-    function getLocationsIn(bounds) {
+    function getPlacesIn(bounds) {
         
         var def = $q.defer();
 
-        $http.get(API_URL+"/location",{ 
+        $http.get(API_URL+"/places",{ 
             params: bounds
         }).then(function(res){
             console.log(res);
@@ -46,9 +46,9 @@ angular.module('services').factory('DropinService', function($q, $http){
     }
    
     return {
-        getLocations: getLocations,
-        getLocationsIn: getLocationsIn,
-        postLocation: postLocation
+        getPlaces: getPlaces,
+        getPlacesIn: getPlacesIn,
+        postPlace: postPlace
     };
     
 });

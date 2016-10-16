@@ -7,7 +7,7 @@ angular.module('controllers')
 
     var pressPosition, placeholder, pressTimeout;
 
-    function addLocation() {
+    function addPlace() {
 
         document.getElementById("map").style.height = "250px";
 
@@ -18,14 +18,14 @@ angular.module('controllers')
 
         var pos = pressPosition.latLng.toJSON();
 
-        $scope.pressLocation = {
+        $scope.pressPlace = {
             geometry: {
                 coordinates: [pos.lat, pos.lng]
             },
             description: ""
         };
 
-        addPlaceholderLocationMarker($scope.pressLocation);
+        addPlaceholderMarker($scope.pressPlace);
 
         $scope.addFormOpen = true;
         $scope.$apply();
@@ -43,17 +43,19 @@ angular.module('controllers')
         map.setCenter(pressPosition.latLng);
         map.setZoom(16);
 
-        $scope.pressLocation = null;
+        $scope.pressPlace = null;
     };
 
-    $scope.commitLocationToServer = function () {
+    $scope.commitPlaceToServer = function () {
 
-        DropinService.postLocation($scope.pressLocation)
+        DropinService.postPlace($scope.pressPlace)
             .then(function (res) {
                 console.log('saved');
                 $scope.closeForm();
             })
-            .catch(console.error);
+            .catch(function (err) {
+                console.error(JSON.stringify(err));
+            });
     }
 
     $scope.$on('MAP_LOADED', function (e, _map) {
@@ -64,7 +66,7 @@ angular.module('controllers')
             clearTimeout(pressTimeout);
             if ($scope.addFormOpen) return;
             pressPosition = event;
-            pressTimeout = setTimeout(addLocation, 2000);
+            pressTimeout = setTimeout(addPlace, 2000);
         });
 
         map.addListener('mouseup', function (event) {
@@ -90,19 +92,19 @@ angular.module('controllers')
             };
             console.log(JSON.stringify(query));
 
-            DropinService.getLocationsIn(query)
-                .then(function (locations) {
-                    mergeLocations(locations);
+            DropinService.getPlacesIn(query)
+                .then(function (places) {
+                    mergePlaces(places);
                 });
         });
 
     });
 
 
-    function mergeLocations(locations) {
+    function mergePlaces(places) {
 
-        var new_siteids = locations.map(function (location) {
-            return location._id;
+        var new_siteids = places.map(function (place) {
+            return place._id;
         });
 
         var marked_siteids = [];
@@ -121,19 +123,17 @@ angular.module('controllers')
             }
         }
 
-        locations.forEach(function (location) {
-            addLocationMarker(location);
+        places.forEach(function (place) {
+            addPlaceMarker(place);
         })
     }
 
 
-
-
-    function addPlaceholderLocationMarker(location) {
+    function addPlaceholderMarker(place) {
 
         var myLatLng = {
-            lat: location.geometry.coordinates[0],
-            lng: location.geometry.coordinates[1]
+            lat: place.geometry.coordinates[0],
+            lng: place.geometry.coordinates[1]
         };
 
         placeholder = new google.maps.Marker({
@@ -147,15 +147,15 @@ angular.module('controllers')
     }
 
 
-    function addLocationMarker(location) {
+    function addPlaceMarker(place) {
 
-        if (markers[location._id]) {
+        if (markers[place._id]) {
             return;
         }
 
         var myLatLng = {
-            lat: location.geometry.coordinates[0],
-            lng: location.geometry.coordinates[1]
+            lat: place.geometry.coordinates[0],
+            lng: place.geometry.coordinates[1]
         };
 
         var marker = new google.maps.Marker({
@@ -169,7 +169,7 @@ angular.module('controllers')
             //            $rootScope.viewStop(stop);
         });
 
-        markers[location._id] = marker;
+        markers[place._id] = marker;
     }
 
 });

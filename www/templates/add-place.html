@@ -3,7 +3,7 @@
     <google-map></google-map>
 
 
-    <div id="add-location-panel" class="list" ng-show="addFormOpen">
+    <div id="add-place-panel" class="list" ng-show="addFormOpen">
 
         <label class="item item-input item-select">
             <div class="input-label">
@@ -17,11 +17,11 @@
         </label>
         <label class="item item-input item-stacked-label">
             <span class="input-label">Description</span>
-            <input type="text" ng-model="pressLocation.description" placeholder="The drinking fountain is inside the ...">
+            <input type="text" ng-model="pressPlace.description" placeholder="The drinking fountain is inside the ...">
         </label>
 
 
-        <button class="button button-full button-balanced" ng-click="commitLocationToServer()">Save</button>
+        <button class="button button-full button-balanced" ng-click="commitPlaceToServer()">Save</button>
 
         <button class="button button-full button-dark" ng-click="closeForm()">Cancel</button>
 
