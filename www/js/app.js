@@ -1,6 +1,10 @@
-angular.module('dropin', ['ionic', 'ngRoute', 'services', 'controllers', 'directives', 'pascalprecht.translate'])
+angular.module('dropin', ['ionic', 'ngRoute', 'services', 'controllers', 'directives', 'pascalprecht.translate', 'DropinService'])
 
 .run(function ($ionicPlatform, DropinService, Config, googleMapsLoader, $state) {
+    
+    DropinService.setBowerPath('lib/');
+    var SERVER_URL = "https://the-dropin.herokuapp.com";
+    DropinService.setUrl(SERVER_URL);
 
     function ready() {
         console.log('ready')
@@ -54,25 +58,6 @@ angular.module('dropin', ['ionic', 'ngRoute', 'services', 'controllers', 'direct
 })
 
 .config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
-    /*
-        $translateProvider
-            .useStaticFilesLoader({
-                prefix: 'js/locales/',
-                suffix: '.json'
-            })
-            .registerAvailableLanguageKeys(['en', 'es'], {
-                'en': 'en',
-                'en_GB': 'en',
-                'en_US': 'en',
-                'es': 'es',
-                'es-MX': 'es',
-                'es_ES': 'es'
-            })
-            .preferredLanguage('en')
-            .fallbackLanguage('en')
-            .determinePreferredLanguage()
-            .useSanitizeValueStrategy('escapeParameters');
-    */
 
     $stateProvider
         .state('intro', {

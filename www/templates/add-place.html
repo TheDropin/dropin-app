@@ -9,10 +9,10 @@
             <div class="input-label">
                 What is it?
             </div>
-            <select>
-                <option>Drinking Fountain</option>
-                <option selected>Restroom</option>
-                <option>Power Outlet</option>
+            <select ng-model="pressPlace.type">
+                <option value="water">Drinking Fountain</option>
+                <option value="restroom" selected>Restroom</option>
+                <option value="electric">Power Outlet</option>
             </select>
         </label>
         <label class="item item-input item-stacked-label">
