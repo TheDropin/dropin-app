@@ -9,15 +9,13 @@
             <div class="input-label">
                 What is it?
             </div>
-            <select ng-model="pressPlace.type">
-                <option value="water">Drinking Fountain</option>
-                <option value="restroom" selected>Restroom</option>
-                <option value="electric">Power Outlet</option>
+            <select ng-model="pressPlace.type" 
+                    ng-options="key as value for (key, value) in types">
             </select>
         </label>
         <label class="item item-input item-stacked-label">
             <span class="input-label">Description</span>
-            <input type="text" ng-model="pressPlace.description" placeholder="The drinking fountain is inside the ...">
+            <input type="text" ng-model="pressPlace.description" placeholder="Offers assistance with ...">
         </label>
 
 
