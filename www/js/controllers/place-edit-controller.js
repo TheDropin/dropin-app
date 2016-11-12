@@ -1,5 +1,7 @@
 angular.module('controllers')
-    .controller('PlaceEditController', function ($scope, DropinService) {
+    .controller('PlaceEditController', function ($scope, DropinService, $stateParams) {
+
+        $scope.place = $stateParams.place;
 
         $scope.types = {
             restroom: "Restroom",
@@ -7,33 +9,10 @@ angular.module('controllers')
             water: "Drinking Fountain"
         };
 
-        var map, markers = {};
+        var map;
 
         var pressPosition, placeholder, pressTimeout;
 
-        function addPlace() {
-
-            document.getElementById("map").style.height = "250px";
-
-            google.maps.event.trigger(map, 'resize');
-
-            map.setCenter(pressPosition.latLng);
-            map.setZoom(18);
-
-            var pos = pressPosition.latLng.toJSON();
-
-            $scope.pressPlace = {
-                geometry: {
-                    coordinates: [pos.lat, pos.lng]
-                },
-                description: ""
-            };
-
-            addPlaceholderMarker($scope.pressPlace);
-
-            $scope.addFormOpen = true;
-            $scope.$apply();
-        }
 
         $scope.commitPlaceToServer = function () {
 
@@ -51,42 +30,20 @@ angular.module('controllers')
             map = _map;
             $scope.map = map;
 
-            map.addListener('mousedown', function (event) {
-                clearTimeout(pressTimeout);
-                if ($scope.addFormOpen) return;
-                pressPosition = event;
-                pressTimeout = setTimeout(addPlace, 2000);
-            });
+            if ($scope.place) {
 
-            map.addListener('mouseup', function (event) {
-                if ($scope.addFormOpen) return;
-                clearTimeout(pressTimeout);
-            });
-
-            map.addListener('bounds_changed', function () {
-                clearTimeout(pressTimeout);
-            });
-
-            map.addListener('idle', function () {
-
-                console.log('idle');
-                if ($scope.addFormOpen) return;
-
-                var bounds = map.getBounds().toJSON();
-                var query = {
-                    xmin: bounds['west'],
-                    xmax: bounds.east,
-                    ymin: bounds.south,
-                    ymax: bounds.north
+                var coords = $scope.place.geometry.coordinates;
+                var myLatLng = {
+                    lat: coords[0],
+                    lng: coords[1]
                 };
-                console.log(JSON.stringify(query));
 
-                DropinService.getPlacesIn(query)
-                    .then(function (places) {
-                        mergePlaces(places);
-                    });
-            });
+                map.setCenter(myLatLng);
+                map.setZoom(18);
 
+                addPlaceholderMarker($scope.place);
+
+            }
         });
 
 

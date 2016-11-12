@@ -9815,9 +9815,9 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-#map {
-  height: 100%;
+.places-map {
   width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0; }
@@ -9829,6 +9829,9 @@ a.button {
   position: absolute;
   top: 250px;
   width: 100%; }
+
+.place-edit-map {
+  height: 250px; }
 
 img.intro-screen {
   margin: 60px auto 40px auto !important;

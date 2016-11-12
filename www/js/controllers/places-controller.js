@@ -15,14 +15,6 @@ angular.module('controllers')
 
         function addPlace() {
             
-/*
-            document.getElementById("map").style.height = "250px";
-
-            google.maps.event.trigger(map, 'resize');
-
-            map.setCenter(pressPosition.latLng);
-            map.setZoom(18);
-*/
             var pos = pressPosition.latLng.toJSON();
 
             $scope.pressPlace = {
