@@ -11,8 +11,9 @@ angular.module('controllers')
 
         var map, markers = {};
 
-        var pressPosition, placeholder, pressTimeout;
+        var pressPosition, pressTimeout;
 
+    
         function addPlace() {
             
             var pos = pressPosition.latLng.toJSON();
@@ -24,42 +25,10 @@ angular.module('controllers')
                 description: ""
             };
             
-            $state.go('place-edit', {place:$scope.pressPlace});
-/*            
-            addPlaceholderMarker($scope.pressPlace);
-
-            $scope.addFormOpen = true;
-            $scope.$apply();
-*/            
+            $state.go('place-edit', {place:$scope.pressPlace});           
         }
 
-        $scope.closeForm = function () {
-
-            placeholder.setMap(null);
-
-            $scope.addFormOpen = false;
-
-            document.getElementById("map").style.height = "100%";
-            google.maps.event.trigger(map, 'resize');
-
-            map.setCenter(pressPosition.latLng);
-            map.setZoom(16);
-
-            $scope.pressPlace = null;
-        };
-
-        $scope.commitPlaceToServer = function () {
-
-            DropinService.postPlace($scope.pressPlace)
-                .then(function (res) {
-                    console.log('saved');
-                    $scope.closeForm();
-                })
-                .catch(function (err) {
-                    console.error(JSON.stringify(err));
-                });
-        }
-
+    
         $scope.$on('MAP_LOADED', function (e, _map) {
             map = _map;
             $scope.map = map;
@@ -131,24 +100,6 @@ angular.module('controllers')
         }
 
 
-        function addPlaceholderMarker(place) {
-
-            var myLatLng = {
-                lat: place.geometry.coordinates[0],
-                lng: place.geometry.coordinates[1]
-            };
-
-            placeholder = new google.maps.Marker({
-                position: myLatLng,
-                map: map,
-                draggable: true,
-                //            icon: PaletteService.getMapPinForStop(stop),
-                title: 'Hello World!'
-            });
-
-        }
-
-
         function addPlaceMarker(place) {
 
             if (markers[place._id]) {
@@ -168,7 +119,7 @@ angular.module('controllers')
             });
 
             marker.addListener('click', function () {
-                //            $rootScope.viewStop(stop);
+                $state.go('place-edit', { place: place });
             });
 
             markers[place._id] = marker;

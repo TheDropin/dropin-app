@@ -1,5 +1,5 @@
 angular.module('controllers')
-    .controller('PlaceEditController', function ($scope, DropinService, $stateParams) {
+    .controller('PlaceEditController', function ($scope, DropinService, $stateParams, $state) {
 
         $scope.place = $stateParams.place;
 
@@ -9,17 +9,28 @@ angular.module('controllers')
             water: "Drinking Fountain"
         };
 
-        var map;
-
-        var pressPosition, placeholder, pressTimeout;
+        var map, placeholder, pressTimeout;
 
 
         $scope.commitPlaceToServer = function () {
 
-            DropinService.postPlace($scope.pressPlace)
+            if (placeholder) {
+                var pos = placeholder.getPosition().toJSON();
+                $scope.place.geometry.coordinates = [pos.lat, pos.lng];
+            }            
+
+            var promise;
+
+            if ($scope.place._id) {
+                promise = DropinService.updatePlace($scope.place)
+            } else {
+                promise = DropinService.postPlace($scope.place)
+            }
+
+            promise
                 .then(function (res) {
                     console.log('saved');
-                    $scope.closeForm();
+                    $state.go('places');
                 })
                 .catch(function (err) {
                     console.error(JSON.stringify(err));
@@ -32,16 +43,13 @@ angular.module('controllers')
 
             if ($scope.place) {
 
-                var coords = $scope.place.geometry.coordinates;
-                var myLatLng = {
-                    lat: coords[0],
-                    lng: coords[1]
-                };
-
-                map.setCenter(myLatLng);
+                placeholder = addPlaceholderMarker($scope.place);
+                map.setCenter(placeholder.getPosition());
                 map.setZoom(18);
 
-                addPlaceholderMarker($scope.place);
+                placeholder.addListener('dragend', function (pos) {
+                    map.panTo(placeholder.getPosition());
+                });
 
             }
         });
@@ -54,7 +62,7 @@ angular.module('controllers')
                 lng: place.geometry.coordinates[1]
             };
 
-            placeholder = new google.maps.Marker({
+            var pin = new google.maps.Marker({
                 position: myLatLng,
                 map: map,
                 draggable: true,
@@ -62,6 +70,19 @@ angular.module('controllers')
                 title: 'Hello World!'
             });
 
+            $scope.$watch('place.type', function (value) {
+                console.log(value);
+
+                var iconUrl = DropinService.placeIcon(place.type);
+                placeholder.setIcon(iconUrl);
+            });
+
+            return pin;
+        }
+
+
+        $scope.cancel = function () {
+            $state.go('places');
         }
 
     });
