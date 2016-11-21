@@ -83,6 +83,16 @@ angular.module('controllers')
 
         $scope.cancel = function () {
             $state.go('places');
-        }
+        };
+
+        $scope.delete = function () {
+            if (navigator.notification.confirm('Really delete this place?')) {
+                DropinService.deletePlace($scope.place._id)
+                    .then(function(){
+                        $state.go('places');
+                    })
+                    .catch(console.log);
+            }
+        };
 
     });
