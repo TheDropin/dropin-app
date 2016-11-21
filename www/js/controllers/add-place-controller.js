@@ -104,7 +104,7 @@ angular.module('controllers')
     function mergePlaces(places) {
 
         var new_siteids = places.map(function (place) {
-            return place._id;
+            return place.id;
         });
 
         var marked_siteids = [];
@@ -149,7 +149,7 @@ angular.module('controllers')
 
     function addPlaceMarker(place) {
 
-        if (markers[place._id]) {
+        if (markers[place.id]) {
             return;
         }
 
@@ -169,7 +169,7 @@ angular.module('controllers')
             //            $rootScope.viewStop(stop);
         });
 
-        markers[place._id] = marker;
+        markers[place.id] = marker;
     }
 
 });

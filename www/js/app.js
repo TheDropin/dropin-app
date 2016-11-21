@@ -3,7 +3,7 @@ angular.module('dropin', ['ionic', 'ngRoute', 'services', 'controllers', 'direct
 .run(function ($ionicPlatform, DropinService, Config, googleMapsLoader, $state) {
     
     DropinService.setBowerPath('lib/');
-    var SERVER_URL = "https://the-dropin.herokuapp.com";
+    var SERVER_URL = "http://dev-the-dropin-7.pantheonsite.io";
     DropinService.setUrl(SERVER_URL);
 
     function ready() {
