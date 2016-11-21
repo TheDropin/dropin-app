@@ -35,6 +35,7 @@
         "/Users/joebeuckman/Documents/dropin-app/platforms/ios/www/lib/jquery/src/data.js",
         "/Users/joebeuckman/Documents/dropin-app/platforms/ios/www/lib/jquery/src/css/showHide.js",
         "/Users/joebeuckman/Documents/dropin-app/platforms/android/assets/www/lib/jquery/src/data/Data.js",
-        "/Users/joebeuckman/Documents/dropin-app/platforms/android/assets/www/lib/jquery/src/data/var/acceptData.js"
+        "/Users/joebeuckman/Documents/dropin-app/platforms/android/assets/www/lib/jquery/src/data/var/acceptData.js",
+        "Users/joebeuckman/Documents/dropin-app/platforms/android/assets/www/lib/jquery/src/var/documentElement"
     ]
 }

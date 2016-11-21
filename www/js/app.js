@@ -67,13 +67,30 @@ angular.module('dropin', ['ionic', 'ngRoute', 'services', 'controllers', 'direct
             cache: false
         })
     
-        .state('add-place', {
-            url: '/add-place',
-            templateUrl: 'templates/add-place.html',
-            controller: 'AddPlaceController',
-            cache: false
+        .state('places', {
+            url: '/places',
+            templateUrl: 'templates/places.html',
+            controller: 'PlacesController'
+        })
+        .state('place-edit', {
+            url: '/place-edit',
+            templateUrl: 'templates/place-edit.html',
+            controller: 'PlaceEditController',
+            params: {
+                place: null
+            }
+        })
+        .state('signup', {
+            url: '/signup',
+            templateUrl: 'templates/signup.html',
+            controller: 'AccountController'
+        })
+        .state('login', {
+            url: '/login',
+            templateUrl: 'templates/login.html',
+            controller: 'AccountController'
         });
-
+    
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/add-place');
 });
