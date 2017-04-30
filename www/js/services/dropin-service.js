@@ -1,16 +1,16 @@
 var module = angular.module('DropinService', []);
 
 module.factory('DropinService', function ($q, $http) {
-
+    
     var API_URL = '';
     var API_PREFIX = "/api/v1";
-
+/*
     var token = localStorage.getItem('Account-JWT');
     if (token) {
         $http.defaults.headers.common.Authorization = token;
         localStorage.setItem('Account-JWT', token);
     }
-
+*/
 
     function authenticate(user) {
 
@@ -22,7 +22,7 @@ module.factory('DropinService', function ($q, $http) {
                 localStorage.setItem('Account-JWT', token);
             })
             .catch(function (err) {
-                console.error(err);
+                console.error(JSON.stringify(err));
             });
     }
 
@@ -33,7 +33,7 @@ module.factory('DropinService', function ($q, $http) {
                 console.log(response);
             })
             .catch(function (err) {
-                console.error(err);
+                console.error(JSON.stringify(err));
             });
     }
 
@@ -41,7 +41,7 @@ module.factory('DropinService', function ($q, $http) {
 
         var def = $q.defer();
 
-        $http.post(API_URL + "/places", place)
+        $http.post(API_URL + API_PREFIX + "/places", place)
             .then(function (res) {
                 def.resolve(res.data);
             })
@@ -62,6 +62,11 @@ module.factory('DropinService', function ($q, $http) {
 
         return def.promise;
     }
+    
+    function deletePlace(placeId) {
+        
+        return $http.delete(API_URL + API_PREFIX + "/places/"+placeId);
+    }
 
     function getPlaces() {
 
@@ -70,17 +75,21 @@ module.factory('DropinService', function ($q, $http) {
     }
 
     function getPlacesIn(bounds) {
-
+console.log('getPlacesIn');
         var def = $q.defer();
-
+        
+            console.log('$http.get');
         $http.get(API_URL + API_PREFIX + "/places", {
                 params: bounds
             })
             .then(function (res) {
-                def.resolve(res.data.content);
+            console.log(res);
+                def.resolve(res.data.results);
             })
             .catch(function (err) {
-                console.error(err);
+            console.log('error')
+                console.log(err);
+                console.error(JSON.stringify(err));
             });
 
         return def.promise;
@@ -100,7 +109,10 @@ module.factory('DropinService', function ($q, $http) {
 
     
     return {
-        setBowerPath: function(path){ bowerPath = path; },
+        setBowerPath: function(path){
+            bowerPath = path; 
+            placeIconPath = bowerPath+'dropin-service/img/place_icons/';
+        },
         setUrl: function (url) {
             API_URL = url;
         },
@@ -111,10 +123,16 @@ module.factory('DropinService', function ($q, $http) {
         },
         postPlace: postPlace,
         updatePlace: updatePlace,
+        deletePlace: deletePlace,
         getPlaces: getPlaces,
         getPlacesIn: getPlacesIn,
         placeIcon: function(type) {
-            return placeIconPath + placeIcon[type];
+            var icon = placeIcon[type];
+            if (icon) {
+                return placeIconPath + icon;
+            } else {
+                return null;
+            }
         }
     };
 })

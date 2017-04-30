@@ -3,7 +3,8 @@ angular.module('dropin', ['ionic', 'ngRoute', 'services', 'controllers', 'direct
 .run(function ($ionicPlatform, DropinService, Config, googleMapsLoader, $state) {
     
     DropinService.setBowerPath('lib/');
-    var SERVER_URL = "http://dev-the-dropin-7.pantheonsite.io";
+//    var SERVER_URL = "http://localhost:3000";
+    var SERVER_URL = "http://the-dropin.herokuapp.com";
     DropinService.setUrl(SERVER_URL);
 
     function ready() {
@@ -26,19 +27,12 @@ angular.module('dropin', ['ionic', 'ngRoute', 'services', 'controllers', 'direct
             runNumber++;
         }
         storage.setItem('runNumber', runNumber);
-
+/*
         if (true || runNumber == 1) {
             console.log('going to intro')
             $state.go('intro');
         }
-
-        /*
-                DropinService.getLocations(44.9, -92.3)
-                    .then(function (res) {
-                        console.dir(res);
-                    })
-                    .catch(console.error);
-        */
+*/
         if (window.cordova && window.cordova.plugins.Keyboard) {
             cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
             cordova.plugins.Keyboard.disableScroll(true);
@@ -92,5 +86,5 @@ angular.module('dropin', ['ionic', 'ngRoute', 'services', 'controllers', 'direct
         });
     
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/add-place');
+    $urlRouterProvider.otherwise('/places');
 });

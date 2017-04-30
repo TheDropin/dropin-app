@@ -1,5 +1,5 @@
 angular.module('controllers').controller('IntroController', function ($rootScope) {
     
-    console.log('intro-controller');   
+console.log('intro-controller');   
     
 });

@@ -61,11 +61,14 @@ angular.module('controllers')
                     ymin: bounds.south,
                     ymax: bounds.north
                 };
+                console.log('will query...');
                 console.log(JSON.stringify(query));
 
                 DropinService.getPlacesIn(query)
                     .then(function (places) {
                         mergePlaces(places);
+                    }).catch(function(error){
+                        console.log(JSON.stringify(error))
                     });
             });
 
@@ -75,7 +78,7 @@ angular.module('controllers')
         function mergePlaces(places) {
 
             var new_siteids = places.map(function (place) {
-                return place._id;
+                return place.id;
             });
 
             var marked_siteids = [];
@@ -102,27 +105,27 @@ angular.module('controllers')
 
         function addPlaceMarker(place) {
 
-            if (markers[place._id]) {
+            if (markers[place.id]) {
                 return;
             }
 
             var myLatLng = {
-                lat: place.geometry.coordinates[0],
-                lng: place.geometry.coordinates[1]
+                lat: place.fields.location.geo[1],
+                lng: place.fields.location.geo[0]
             };
-
+console.log(JSON.stringify(myLatLng));
             var marker = new google.maps.Marker({
                 position: myLatLng,
                 map: map,
-                title: 'Hello World!',
-                icon: DropinService.placeIcon(place.type)
+                title: place.fields.title,
+//                icon: DropinService.placeIcon(place.fields.type)
             });
 
             marker.addListener('click', function () {
                 $state.go('place-edit', { place: place });
             });
 
-            markers[place._id] = marker;
+            markers[place.id] = marker;
         }
 
     });

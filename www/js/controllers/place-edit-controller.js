@@ -56,10 +56,10 @@ angular.module('controllers')
 
 
         function addPlaceholderMarker(place) {
-
+            
             var myLatLng = {
-                lat: place.geometry.coordinates[0],
-                lng: place.geometry.coordinates[1]
+                lat: place.fields.location.geo[1],
+                lng: place.fields.location.geo[0]
             };
 
             var pin = new google.maps.Marker({
