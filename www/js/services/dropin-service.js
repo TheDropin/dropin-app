@@ -96,16 +96,6 @@ console.log('getPlacesIn');
     }
 
 
-    var bowerPath = 'bower_components/';
-    var placeIconPath = bowerPath+'dropin-service/img/place_icons/';
-    var placeIcon = {
-        food: 'apple.png',
-        restroom: 'toilet-paper.png',
-        bed: 'person-lying-on-bed-inside-a-home.png',
-        electric: 'power-cord.png',
-        water: 'raindrop.png',
-        help: 'stop.png'
-    };
 
     
     return {
@@ -127,6 +117,7 @@ console.log('getPlacesIn');
         getPlaces: getPlaces,
         getPlacesIn: getPlacesIn,
         placeIcon: function(type) {
+
             var icon = placeIcon[type];
             if (icon) {
                 return placeIconPath + icon;
