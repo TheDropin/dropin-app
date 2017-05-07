@@ -122,7 +122,7 @@ console.log(JSON.stringify(myLatLng));
             });
 
             marker.addListener('click', function () {
-                $state.go('place-edit', { place: place });
+                $state.go('app.place-edit', { place: place });
             });
 
             markers[place.id] = marker;
