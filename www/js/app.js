@@ -77,8 +77,9 @@ angular.module('dropin', ['ionic', 'ngRoute', 'services', 'controllers', 'direct
                 'menuContent': {
                     templateUrl: 'templates/place-edit.html',
                     controller: 'PlaceEditController',
-                }
+                },
             },
+            cache: false,
             params: {
                 place: null
             }
@@ -90,79 +91,8 @@ angular.module('dropin', ['ionic', 'ngRoute', 'services', 'controllers', 'direct
                     templateUrl: 'templates/search.html'
                 }
             }
-        })
-        /*
+        });
 
-            .state('app.browse', {
-                    url: '/browse',
-                    views: {
-                        'menuContent': {
-                            templateUrl: 'templates/browse.html'
-                        }
-                    }
-                })
-                .state('app.playlists', {
-                    url: '/playlists',
-                    views: {
-                        'menuContent': {
-                            templateUrl: 'templates/playlists.html',
-                            controller: 'PlaylistsCtrl'
-                        }
-                    }
-                })
-
-            .state('app.single', {
-                url: '/playlists/:playlistId',
-                views: {
-                    'menuContent': {
-                        templateUrl: 'templates/playlist.html',
-                        controller: 'PlaylistCtrl'
-                    }
-                }
-            });
-        */
-        // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/places');
 });
 
-
-/*
-.config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
-
-    $stateProvider
-        .state('intro', {
-            url: '/intro',
-            templateUrl: 'templates/intro.html',
-            controller: 'IntroController',
-            cache: false
-        })
-    
-        .state('places', {
-            url: '/places',
-            templateUrl: 'templates/places.html',
-            controller: 'PlacesController'
-        })
-        .state('place-edit', {
-            url: '/place-edit',
-            templateUrl: 'templates/place-edit.html',
-            controller: 'PlaceEditController',
-            params: {
-                place: null
-            }
-        })
-        .state('signup', {
-            url: '/signup',
-            templateUrl: 'templates/signup.html',
-            controller: 'AccountController'
-        })
-        .state('login', {
-            url: '/login',
-            templateUrl: 'templates/login.html',
-            controller: 'AccountController'
-        });
-    
-    // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/places');
-});
-
-*/

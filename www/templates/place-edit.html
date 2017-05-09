@@ -2,8 +2,23 @@
 
     <google-map class="place-edit-map"></google-map>
 
-
     <div id="add-place-panel" class="list">
+
+        <label class="item">
+            <h2>{{ place.name }}</h2>
+
+            <p>{{ place.telephone }}</p>
+            <p>{{ place.location }}</p>
+
+            <p>{{ place.content }}</p>
+
+            {{ place.services }}
+
+
+        </label>
+    </div>
+
+    <!--div id="add-place-panel" class="list">
 
         <label class="item item-input item-select">
             <div class="input-label">
@@ -25,6 +40,6 @@
 
         <button class="button button-full button-assertive" ng-click="delete()">Delete</button>
 
-    </div>
+    </div-->
 
 </ion-content>

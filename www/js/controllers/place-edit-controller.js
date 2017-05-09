@@ -2,6 +2,7 @@ angular.module('controllers')
     .controller('PlaceEditController', function ($scope, DropinService, $stateParams, $state) {
 
         $scope.place = $stateParams.place;
+    console.log(JSON.stringify($scope.place))
 
         $scope.types = {
             restroom: "Restroom",

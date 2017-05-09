@@ -117,13 +117,14 @@ console.log('getPlacesIn');
         getPlaces: getPlaces,
         getPlacesIn: getPlacesIn,
         placeIcon: function(type) {
-
+/*
             var icon = placeIcon[type];
             if (icon) {
                 return placeIconPath + icon;
             } else {
                 return null;
             }
+*/            
         }
     };
 })

@@ -3,12 +3,6 @@ angular.module('controllers')
 
         $scope.addFormOpen = false;
 
-        $scope.types = {
-            restroom: "Restroom",
-            electric: "Power Outlet",
-            water: "Drinking Fountain"
-        };
-
         var map, markers = {};
 
         var pressPosition, pressTimeout;
